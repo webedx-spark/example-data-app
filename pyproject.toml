@@ -1,0 +1,60 @@
+[tool.poetry]
+name = "reference-data-application"
+version = "0.1.0"
+description = ""
+authors = ["saeed-coursera <sarezoumand@coursera.org>"]
+readme = "README.md"
+packages = [{include = "reference_data_application"}]
+classifiers = [
+    "Private :: Do not Upload",  # Prevent uploading to PyPI
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+courdata-core = "14.0.0"
+
+[tool.poetry.group.dev.dependencies]
+courdata-dev-tools = "14.0.0"
+
+
+[[tool.poetry.source]]
+name = "coursera-pypi-virtual"
+url = "https://coursera.jfrog.io/artifactory/api/pypi/pypi-virtual/simple"
+priority = "default"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+skip = [".github", ".venv", "build", "dist", "scripts"]
+profile = "black"
+
+[tool.black]
+line-length = 100 # same as ruff.
+target-version = ['py39']
+extend-exclude =  "/(\\.github|scripts)/"
+
+[tool.ruff]
+# Enable the pycodestyle (`E`) and Pyflakes (`F`) rules by default.
+# Unlike Flake8, Ruff doesn't enable pycodestyle warnings (`W`) or
+# McCabe complexity (`C901`) by default.
+select = ["E", "F"]
+ignore = []
+
+# Allow autofix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+
+# Exclude a variety of commonly ignored directories. same as black.
+exclude = [".github", ".venv", "build", "dist", "scripts"]
+per-file-ignores = {}
+isort.combine-as-imports = true
+
+line-length = 100 # Same as Black.
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+target-version = 'py39'
+

@@ -1,0 +1,14 @@
+name: Application Build
+on:
+  pull_request:
+    branches:
+      - main
+
+# Permission can be added at job level or workflow level
+permissions:
+  contents: read
+
+jobs:
+  workflow-call:
+    uses: webedx-spark/shared-data-libraries/.github/workflows/data-application-build.yaml@main
+    secrets: inherit
